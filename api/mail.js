@@ -1,4 +1,5 @@
 const nodemailer = require('nodemailer');
+const paymentBodyTemplate = require('./utils/bodyTemplate');
 
 const { SMTP_HOST, SMTP_PORT, EMAIL_USER, EMAIL_PASS } = process.env;
 
@@ -12,15 +13,15 @@ const transport = nodemailer.createTransport({
   }
 });
 
-const mailOptions = {
+const mailOptions = payment => ({
   from: EMAIL_USER,
   to: EMAIL_USER,
-  subject: 'Sending Email using Node.js',
-  text: 'That was easy!'
-};
+  subject: `${payment.course} - Pago recibido`,
+  html: paymentBodyTemplate(payment)
+});
 
-function sendEmail() {
-  transport.sendMail(mailOptions, (err, info) => {
+function sendReceivedPaymentEmail(payment) {
+  transport.sendMail(mailOptions(payment), (err, info) => {
     if (err) {
       return console.error(err);
     }
@@ -29,4 +30,4 @@ function sendEmail() {
   });
 }
 
-module.exports = sendEmail;
+module.exports = sendReceivedPaymentEmail;
