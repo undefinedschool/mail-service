@@ -9,7 +9,6 @@ router.all('*', cors());
 router.get('/health', (req, res) => res.sendStatus(200));
 
 router.post('/payments', (req, res) => {
-  console.log('POST!');
   notifyPayment(req.body);
   res.json(req.body);
 });
