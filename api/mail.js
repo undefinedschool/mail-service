@@ -20,7 +20,7 @@ const mailOptions = payment => ({
   html: paymentBodyTemplate(payment)
 });
 
-function sendReceivedPaymentEmail(payment) {
+const notifyPayment = payment =>
   transport.sendMail(mailOptions(payment), (err, info) => {
     if (err) {
       return console.error(err);
@@ -28,6 +28,5 @@ function sendReceivedPaymentEmail(payment) {
 
     console.log('Message sent: %s', info.response);
   });
-}
 
-module.exports = sendReceivedPaymentEmail;
+module.exports = notifyPayment;
