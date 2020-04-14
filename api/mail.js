@@ -1,15 +1,16 @@
 const nodemailer = require('nodemailer');
 const paymentBodyTemplate = require('./utils/bodyTemplate');
 
-const { SMTP_HOST, SMTP_PORT, EMAIL_USER, EMAIL_PASS } = process.env;
+const { EMAIL_USER, CLIENT_ID, CLIENT_SECRET, REFRESH_TOKEN } = process.env;
 
 const transport = nodemailer.createTransport({
-  host: SMTP_HOST,
-  port: SMTP_PORT,
-  secure: true,
+  service: 'gmail',
   auth: {
+    type: 'OAuth2',
     user: EMAIL_USER,
-    pass: EMAIL_PASS
+    clientId: CLIENT_ID,
+    clientSecret: CLIENT_SECRET,
+    refreshToken: REFRESH_TOKEN
   }
 });
 
