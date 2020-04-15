@@ -26,9 +26,7 @@ const notifyPayment = payment =>
     .connect(API_KEY, SECRET_KEY)
     .post('send', { version: 'v3.1' })
     .request(JSON.stringify(mailOptions(payment)))
-    .then(res => {
-      console.log(res.body);
-    })
+    .then(res => console.log(res.body))
     .catch(err => console.error(err.statusCode));
 
 module.exports = notifyPayment;
