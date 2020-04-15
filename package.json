@@ -23,9 +23,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "helmet": "^3.22.0",
-    "mailgun-js": "^0.22.0",
-    "node-mailjet": "^3.3.1",
-    "nodemailer": "^6.4.6"
+    "node-mailjet": "^3.3.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.3"
