@@ -17,6 +17,6 @@
     "NODE_ENV": "@node_env",
     "EMAIL_USER": "@email_user",
     "API_KEY": "@api_key",
-    "SECRET_KEY": "@secret_ket"
+    "SECRET_KEY": "@secret_key"
   }
 }
