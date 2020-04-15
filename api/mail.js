@@ -1,11 +1,11 @@
 const mailjet = require('node-mailjet');
 const paymentBodyTemplate = require('./utils/bodyTemplate');
 
-const { EMAIL_USER, API_KEY, SECRET_KEY, SERVICE_NAME } = process.env;
+const { EMAIL_USER, API_KEY, SECRET_KEY } = process.env;
 
 const mailOptions = payment => ({
   FromEmail: EMAIL_USER,
-  FromName: SERVICE_NAME,
+  FromName: 'Mail Service',
   to: EMAIL_USER,
   Recipients: [{ Email: EMAIL_USER }],
   Subject: `${payment.course} - Pago recibido`,
