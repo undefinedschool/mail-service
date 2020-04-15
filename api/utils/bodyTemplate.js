@@ -1,4 +1,4 @@
-const paymentBodyTemplate = payment => `<p style="font-size: 18px">💸 Recibiste un nuevo pago correspondiente al curso de <strong>${payment.course}</strong>:</p>
+const paymentBodyTemplate = payment => `<p style="font-size: 16px">💸 Recibiste un nuevo pago correspondiente al curso de <strong>${payment.course}</strong>:</p>
 <ul>
   <li><strong>Estudiante: </strong>${payment.student.name}</li>
   <li><strong>Email: </strong>${payment.student.email}</li>
