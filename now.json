@@ -16,7 +16,6 @@
   "env": {
     "NODE_ENV": "@node_env",
     "EMAIL_USER": "@email_user",
-    "API_KEY": "@api_key",
-    "SECRET_KEY": "@secret_key"
+    "SENDGRID_API_KEY": "@sendgrid_api_key"
   }
 }
