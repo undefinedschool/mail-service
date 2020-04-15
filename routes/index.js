@@ -11,9 +11,6 @@ router.get('/health', (req, res) => res.sendStatus(200));
 router
   .route('/payments')
   .head((req, res) => res.sendStatus(200))
-  .post((req, res) => {
-    notifyPayment(req.body);
-    res.json(req.body);
-  });
+  .post((req, res) => notifyPayment(req, res));
 
 module.exports = router;
