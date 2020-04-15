@@ -4,20 +4,31 @@ const paymentBodyTemplate = require('./utils/bodyTemplate');
 const { EMAIL_USER, API_KEY, SECRET_KEY } = process.env;
 
 const mailOptions = payment => ({
-  FromEmail: EMAIL_USER,
-  FromName: 'Mail Service',
-  to: EMAIL_USER,
-  Recipients: [{ Email: EMAIL_USER }],
-  Subject: `${payment.course} - Pago recibido`,
-  'Html-part': paymentBodyTemplate(payment)
+  Messages: [
+    {
+      From: {
+        Email: EMAIL_USER,
+        Name: 'Mail Service'
+      },
+      To: [
+        {
+          Email: EMAIL_USER
+        }
+      ],
+      Subject: `${payment.course} - Pago recibido`,
+      HTMLPart: paymentBodyTemplate(payment)
+    }
+  ]
 });
 
 const notifyPayment = payment =>
   mailjet
     .connect(API_KEY, SECRET_KEY)
-    .post('send', { version: 'v3' })
+    .post('send', { version: 'v3.1' })
     .request(JSON.stringify(mailOptions(payment)))
-    .then(res => console.log(res.body))
+    .then(res => {
+      console.log(res.body);
+    })
     .catch(err => console.error(err.statusCode));
 
 module.exports = notifyPayment;
