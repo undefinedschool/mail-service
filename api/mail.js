@@ -19,7 +19,7 @@ const notifyPayment = (req, res) => {
     .then(response => {
       console.log(`Message sent succesfully :D \n`);
       console.log(response);
-      res.status(200).send(response);
+      return res.status(200).send(response);
     })
     .catch(err => {
       console.error(err);
